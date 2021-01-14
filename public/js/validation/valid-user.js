@@ -3,9 +3,9 @@ function validation(event){
     $(".error").remove();
     let error = true;
 
-    if($("#fullName").val().length < 5){
+    if($("#name").val().length < 5){
         error = false;
-        $('#fullName').after('<span style="color: red;" class="error">Please provide a name (more than 5 letters).</span>');
+        $('#name').after('<span style="color: red;" class="error">Please provide a name (more than 5 letters).</span>');
     }; 
     if($("#password").val().length < 8){
         error = false;
