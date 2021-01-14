@@ -1,5 +1,5 @@
 <%- include('header', {title: "Blogs"}); -%>
-<%- include('nav', { blogactive:"active",campaignactive:"",useractive:""}); -%>
+<%- include('nav', { blogactive:"",campaignactive:"",useractive:"active"}); -%>
 
         <!-- End Navbar -->
         <div class="content">
@@ -29,69 +29,28 @@
               <div class="col-md-12">
                 <div class="card">
                   <div class="card-header card-header-primary">
-                    <h4 class="card-title">Create Blog</h4>
+                    <h4 class="card-title">Create User</h4>
                     <p class="card-category">Fill the form</p>
                   </div>
                   <div class="card-body">
                     <form>
                       <div class="form-row">
-                        <div class="form-group col-md-6">
-                          <input type="text" name="title" class="form-control" id="inputEmail4" placeholder="Title">
-                        </div>
-                        <div class="form-group col-md-6">
-                          <input type="description" name="description" class="form-control" id="inputPassword4" placeholder="Description">
+                        <div class="form-group col-md-12">
+                          <input type="text" name="name" class="form-control" id="name" placeholder="Full Name">
                         </div>
                       </div>
                       <div class="form-group">
-                        <input type="text" name="writer" class="form-control" id="inputAddress" placeholder="Author">
+                        <div class="form-row">
+                          <div class="form-group col-md-6 col-sm-4">
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                          </div>
+                          <div class="form-group col-md-6 col-sm-4">
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                          </div>
                       </div>
-                      <div class="form-group">
-                        <label for="">Sources</label>
-                        <div class="form-row">
-                          <div class="form-group col-md-4 col-sm-4">
-                            <input type="text" name="title" class="form-control" id="inputEmail4" placeholder="Title">
-                          </div>
-                          <div class="form-group col-md-4 col-sm-4">
-                            <input type="text" name="url" class="form-control" id="inputPassword4" placeholder="Source Link">
-                          </div>
-                          <div class="form-group col-md-4 col-sm-4">
-                            <input type="text" name="description" class="form-control" id="inputPassword4" placeholder="Source Description">
-                          </div>
-                        </div>
-                        <div class="form-row">
-                          <div class="form-group col-md-4 col-sm-4">
-                            <input type="text" name="title" class="form-control" id="inputEmail4" placeholder="Title">
-                          </div>
-                          <div class="form-group col-md-4 col-sm-4">
-                            <input type="text" name="url" class="form-control" id="inputPassword4" placeholder="Source Link">
-                          </div>
-                          <div class="form-group col-md-4 col-sm-4">
-                            <input type="text" name="description" class="form-control" id="inputPassword4" placeholder="Source Description">
-                          </div>
-                        </div>
-                        <div class="form-row">
-                          <div class="form-group col-md-4 col-sm-4">
-                            <input type="text" name="title" class="form-control" id="inputEmail4" placeholder="Title">
-                          </div>
-                          <div class="form-group col-md-4 col-sm-4">
-                            <input type="text" name="url" class="form-control" id="inputPassword4" placeholder="Source Link">
-                          </div>
-                          <div class="form-group col-md-4 col-sm-4">
-                            <input type="text" name="description" class="form-control" id="inputPassword4" placeholder="Source Description">
-                          </div>
-                        </div>
-                      </div>
+            
 
-                      <div class=" form-group">
-                        <div class="">
-                          <input
-                            id="file-3"
-                            type="file"
-                            name="images"
-                            accept="image/*"
-                            multiple
-                          />
-                        </div>
+                    
                         <div id="file-error"></div>
                       </div>
                       <button type="submit" class="btn btn-primary">Submit</button>

@@ -15,13 +15,17 @@
 </div>
 </div>
 
+
 <!--   Core JS Files   -->
 <script src="/js/core/jquery.min.js"></script>
 <script src="/js/core/popper.min.js"></script>
 <script src="/js/core/bootstrap-material-design.min.js"></script>
 <script src="/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!-- Data Picker Initialization -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <!-- Plugin for the momentJs  -->
 <script src="/js/plugins/moment.min.js"></script>
+
 <!--  Plugin for Sweet Alert -->
 <script src="/js/plugins/sweetalert2.js"></script>
 <!-- Forms Validations Plugin -->
@@ -274,6 +278,17 @@ $(document).ready(function () {
     });
   });
 });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.min.js"></script>
+<script>
+  $('#picker').daterangepicker({
+    timePicker: true,
+    startDate: moment().startOf('hour'),
+    endDate: moment().startOf('hour').add(32, 'hour'),
+    locale: {
+      format: 'M/DD hh:mm A'
+    }
+  })
 </script>
 </body>
 </html>
