@@ -1,0 +1,129 @@
+<%- include('header', {title: "Blogs"}); -%>
+<%- include('nav', { blogactive:"active",campaignactive:"",useractive:""}); -%>
+
+        <!-- End Navbar -->
+        <div class="content">
+          <div class="container-fluid">
+            <% if(success){ %>
+            <div
+              class="alert alert-success alert-dismissible fade show mx-4 px-3"
+              role="alert"
+            >
+              <%- success %>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="alert"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <% }; %>
+            <div>
+              <a href="/admin/blogs/create" class="btn btn-primary active"
+                >Create Blog Here</a
+              >
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header card-header-primary">
+                    <h4 class="card-title">Blogs</h4>
+                    <p class="card-category">List of Blog</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead class="text-primary">
+                          <th>ID</th>
+                          <th>Title</th>
+                          <th>Description</th>
+                          <th>Author</th>
+                          <th>Source</th>
+                          <th>Poster Date</th>
+                        </thead>
+                        <tbody>
+                          <% if(blogs.length>0){ %> 
+                            <% blogs.forEach(function(blog){ %>
+                              <tr class="text-capitalize">
+                                <td><%- blog.id %></td>
+                                <% if(blog.title.length > 20){ %>
+                                <td><%- blog.title.substring(0,20) %> ...</td>
+                                <%} else{%>
+                                  <td><%- blog.title %></td>
+                                <% } %>
+
+                                <% if(blog.description.length > 70){ %>
+                                <td><%- blog.description.substring(0,70) %> ...</td>
+                                <%} else{%>
+                                  <td><%- blog.description %></td>
+                                <% } %>  
+
+                                <% if(blog.writer.length > 20){ %>
+                                  <td><%- blog.writer.substring(0,20) %> ...</td>
+                                <%} else{%>
+                                  <td><%- blog.writer %></td>
+                                <% } %>
+                                  
+                                <% blog.sources.forEach((source) => { %>
+                                    <td><a href="<%- source.url %>" class="btn btn-success"> <%- source.title %> ...</a></td>
+                                <% }) %>
+                                <td><%- blog.createdAt %></td>
+                                <td>
+                                  <a
+                                    type="button"
+                                    rel="tooltip"
+                                    title="Edit"
+                                    class="btn btn-primary btn-link btn-sm"
+                                    href="/admin/blogs/edit/<%- blog.id %>"
+                                  >
+                                    <i class="material-icons">edit</i>
+                                  </a>
+                                  <a
+                                    type="button"
+                                    rel="tooltip"
+                                    title="Delete"
+                                    class="btn btn-danger btn-link btn-sm"
+                                    href="/admin/blogs/delete/<%- blog.id %>"
+                                  >
+                                    <i class="material-icons">delete</i>
+                                  </a>
+                                </td>
+                              </tr>
+                          <% }); %> <% }else{ %>
+                          <tr class="flex-c-m flex-w w-full p-t-45">
+                            <th colspan="10">No blogs Found</th>
+                          </tr>
+                          <% }; %>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Load more -->
+            <div class="flex-c-m flex-w w-full p-t-45">
+              <div class="flex-c-m flex-w w-full p-t-45">
+                <% if(page>1){ %>
+                <a
+                  href="/admin/blogs?page=<%- page - 1 %>"
+                  class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04 mx-1"
+                >
+                  Prev
+                </a>
+                <% }; %> <% if(blogs.length===10){ %>
+                <a
+                  href="/admin/blogs?page=<%- page + 1 %>"
+                  class="flex-c-m stext-101 cl5 text-light size-103 bg1 bor1 hov-btn1 p-lr-15 trans-04 mx-1"
+                >
+                  Next
+                </a>
+                <% }; %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<%- include('footer'); -%>

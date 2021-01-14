@@ -1,0 +1,108 @@
+<%- include('header', {title: "Blogs"}); -%>
+<%- include('nav', { blogactive:"active",campaignactive:"",useractive:""}); -%>
+
+        <!-- End Navbar -->
+        <div class="content">
+          <div class="container-fluid">
+            <% if(success){ %>
+            <div
+              class="alert alert-success alert-dismissible fade show mx-4 px-3"
+              role="alert"
+            >
+              <%- success %>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="alert"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <% }; %>
+            <div>
+              <a href="/admin/blogs" class="btn btn-primary active"
+                >Back</a
+              >
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header card-header-primary">
+                    <h4 class="card-title">Create Blog</h4>
+                    <p class="card-category">Fill the form</p>
+                  </div>
+                  <div class="card-body">
+                    <form>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <input type="text" name="title" class="form-control" id="inputEmail4" placeholder="Title">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <input type="description" name="description" class="form-control" id="inputPassword4" placeholder="Description">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <input type="text" name="writer" class="form-control" id="inputAddress" placeholder="Author">
+                      </div>
+                      <div class="form-group">
+                        <label for="">Sources</label>
+                        <div class="form-row">
+                          <div class="form-group col-md-4 col-sm-4">
+                            <input type="text" name="title" class="form-control" id="inputEmail4" placeholder="Title">
+                          </div>
+                          <div class="form-group col-md-4 col-sm-4">
+                            <input type="text" name="url" class="form-control" id="inputPassword4" placeholder="Source Link">
+                          </div>
+                          <div class="form-group col-md-4 col-sm-4">
+                            <input type="text" name="description" class="form-control" id="inputPassword4" placeholder="Source Description">
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-4 col-sm-4">
+                            <input type="text" name="title" class="form-control" id="inputEmail4" placeholder="Title">
+                          </div>
+                          <div class="form-group col-md-4 col-sm-4">
+                            <input type="text" name="url" class="form-control" id="inputPassword4" placeholder="Source Link">
+                          </div>
+                          <div class="form-group col-md-4 col-sm-4">
+                            <input type="text" name="description" class="form-control" id="inputPassword4" placeholder="Source Description">
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-4 col-sm-4">
+                            <input type="text" name="title" class="form-control" id="inputEmail4" placeholder="Title">
+                          </div>
+                          <div class="form-group col-md-4 col-sm-4">
+                            <input type="text" name="url" class="form-control" id="inputPassword4" placeholder="Source Link">
+                          </div>
+                          <div class="form-group col-md-4 col-sm-4">
+                            <input type="text" name="description" class="form-control" id="inputPassword4" placeholder="Source Description">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class=" form-group">
+                        <div class="">
+                          <input
+                            id="file-3"
+                            type="file"
+                            name="images"
+                            accept="image/*"
+                            multiple
+                          />
+                        </div>
+                        <div id="file-error"></div>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Load more -->
+            
+          </div>
+        </div>
+
+<%- include('footer'); -%>

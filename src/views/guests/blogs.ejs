@@ -1,0 +1,101 @@
+<%- include('header') -%>
+<%- include('nav') -%>
+
+    <div class="greennature-page-title-wrapper header-style-5-title-wrapper">
+        <div class="greennature-page-title-overlay"></div>
+        <div class="greennature-page-title-container container">
+            <h1 class="greennature-page-title">Blogs</h1>
+            <span class="greennature-page-caption">Green Ethiopia </span>
+        </div>
+    </div>
+
+    <div class="m-5">
+        <% if(blogs.length>0) {%>
+            <% blogs.forEach(function(blog){ %>
+    
+                <div class="row ml-3 mr-3 mt-5 mb-5">
+                    <div class="col-sm-5 col-md-5 col-lg-5 block2-pic hov-img0">
+                        <div class="greennature-blog-thumbnail greennature-gallery">
+                            <div class="flexslider" data-pausetime="7000" data-slidespeed="600" data-effect="fade">
+                                <ul class="slides">
+                                    <% blog.images.forEach((image) => { %>
+                                        <li>
+                                            <a class="hov-img0 how-pos5-parent rs1 " href="/blogs/<%- blog.id %>" data-fancybox-group="greennature-gal-1" data-rel="fancybox">
+                                                <img class=" img-fluid" src="/images/blogs/<%- image.url %>" alt="" />
+                                            
+                                                <div class=" flex-col-c-m size-140 pt-2 pb-2 pl-3 pr-3 rounded bg-success how-pos5 time-container">
+                                                    <span class="stext-109 txt-center ">
+                                                        <div class=" bold text-light font-weight-bold text-lg">
+                                                            <div class="greennature-blog-day"><%= new Date(blog.createdAt).getFullYear(); %></div>
+                                                            <div class="greennature-blog-month text-uppercase"><%= months[new Date(blog.createdAt).getMonth()] %></div>
+                                                            
+                                                            
+                                                        </div>
+                                                        
+    
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    <% }); %>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+    
+    
+                    </div>
+    
+                    <div class="col-md-7 col-lg-7 col-sm-7">
+                        <div class="blog-content-wrapper">
+                            <header class="post-header">
+                                <h3 class="greennature-blog-title text-capitalize"><a href="/blogs/<%- blog.id %>"><%- blog.title %></a></h3>
+    
+                                <div class="greennature-blog-info text-capitalize">
+                                   
+                                    <div class="blog-info blog-author greennature-skin-info"><i class="fa fa-pencil"></i><%- blog.writer %></div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </header>
+                            <!-- entry-header -->
+    
+                            <div class="greennature-blog-content mt-2 mb-3 text-dark"><%- blog.description.substring(0, 300) %>
+                                <div class="clear"></div>
+                                
+                            </div>
+                            <div>
+                                <a href="/blogs/<%- blog.id %>" class="excerpt-read-more">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <!-- is search -->
+                
+            <% }); %>
+    
+        <%} else{  %>
+            <h1 class="">No Blogs Found!</h1>
+        <% } %> 
+    </div>
+   
+
+    <!-- load more -->
+    <div class="greennature-pagination" style="padding-right:150px">
+        <% if(page>1){ %>
+			<a href="/blogs?page=<%- page - 1 %>&q=<%- query %>"
+				class="prev page-numbers">
+				Prev
+			</a>
+		<% }; %>
+		<% if(blogs.length===10){ %>
+            <a class="next page-numbers" href="/blogs?page=<%- page+1 %>">Next &rsaquo;</a>
+		<% }; %>
+        
+    </div>
+
+    <!-- content wrapper -->
+    
+        <!-- content wrapper -->
+
+<%- include('footer') -%>

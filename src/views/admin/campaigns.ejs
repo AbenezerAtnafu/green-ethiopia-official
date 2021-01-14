@@ -1,0 +1,141 @@
+<%- include('header', {title: "campaigns"}); -%>
+<%- include('nav', { blogactive:"",campaignactive:"active",useractive:""}); -%>
+
+        <!-- End Navbar -->
+        <div class="content">
+          <div class="container-fluid">
+            <% if(success){ %>
+            <div
+              class="alert alert-success alert-dismissible fade show mx-4 px-3"
+              role="alert"
+            >
+              <%- success %>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="alert"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <% }; %>
+            <div>
+              <a href="/admin/campaigns/create" class="btn btn-primary"
+                >Create campaign Here</a
+              >
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header card-header-primary">
+                    <h4 class="card-title">Campaigns</h4>
+                    <p class="card-category">List of Campaign</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead class="text-primary">
+                          <th>ID</th>
+                          <th>Title</th>
+                          <th>Description</th>
+                          <th>Place</th>
+                          <th>Video URL</th>
+                          <th>Join Us URL</th>
+                          <th>Start Date</th>
+                          <th>End Date</th>
+                          <th>Posted Date</th>
+                        </thead>
+                        <tbody>
+                          <% if(campaigns.length>0){ %> <%
+                          campaigns.forEach(function(campaign){ %>
+                          <tr class="text-capitalize">
+                            <td><%- campaign.id %></td>
+                            <% if(campaign.title.length > 20){ %>
+                                <td><%- campaign.title.substring(0,20) %> ...</td>
+                            <%} else{%>
+                                <td><%- campaign.title %></td>
+                            <% } %>                            
+                            
+                            <% if(campaign.description.length > 20){ %>
+                                <td><%- campaign.description.substring(0,20) %> ...</td>
+                            <%} else{%>
+                                <td><%- campaign.description %></td>
+                            <% } %> 
+
+                            <% if(campaign.place.length > 20){ %>
+                                <td><%- campaign.place.substring(0,20) %> ...</td>
+                            <%} else{%>
+                                <td><%- campaign.place %></td>
+                            <% } %> 
+
+                            <% if(campaign.video_url){ %>
+                                <td><a href="<%- campaign.video_url %>" class="btn btn-success">Link</a></td>
+                            <% } else{ %>
+                                <td><a href="<%- campaign.video_url %>" class="btn btn-success">No Link</a></td> 
+                            <% } %>
+                            
+                            <% if(campaign.join_us_url){ %>
+                                <td><a href="<%- campaign.join_us_url %>" class="btn btn-success">Link</a></td>
+                            <% } else{ %>
+                                <td><a href="<%- campaign.join_us_url %>" class="btn btn-success">No Link</a></td> 
+                            <% } %>                            
+                            <td><%- campaign.start_date %></td>
+                            <td><%- campaign.end_date %></td>
+                            <td><%- campaign.createdAt %></td>
+                            <td>
+                              <a
+                                type="button"
+                                rel="tooltip"
+                                title="Edit"
+                                class="btn btn-primary btn-link btn-sm"
+                                href="/admin/campaigns/edit/<%- campaign.id %>"
+                              >
+                                <i class="material-icons">edit</i>
+                              </a>
+                              <a
+                                type="button"
+                                rel="tooltip"
+                                title="Delete"
+                                class="btn btn-danger btn-link btn-sm"
+                                href="/admin/campaigns/delete/<%- campaign.id %>"
+                              >
+                                <i class="material-icons">delete</i>
+                              </a>
+                            </td>
+                          </tr>
+                          <% }); %> <% }else{ %>
+                          <tr class="flex-c-m flex-w w-full p-t-45">
+                            <th colspan="10">No campaigns Found</th>
+                          </tr>
+                          <% }; %>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Load more -->
+            <div class="flex-c-m flex-w w-full p-t-45">
+              <div class="flex-c-m flex-w w-full p-t-45">
+                <% if(page>1){ %>
+                <a
+                  href="/admin/campaigns?page=<%- page - 1 %>"
+                  class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04 mx-1"
+                >
+                  Prev
+                </a>
+                <% }; %> <% if(campaigns.length===10){ %>
+                <a
+                  href="/admin/campaigns?page=<%- page + 1 %>"
+                  class="flex-c-m stext-101 cl5 text-light size-103 bg1 bor1 hov-btn1 p-lr-15 trans-04 mx-1"
+                >
+                  Next
+                </a>
+                <% }; %>
+              </div>
+            </div>
+          </div>
+        </div>
+<%- include('footer'); -%>

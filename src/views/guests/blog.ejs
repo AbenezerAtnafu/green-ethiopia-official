@@ -1,0 +1,104 @@
+<%- include('header') -%>
+<%- include('nav') , {}-%>
+
+    <div class="greennature-page-title-wrapper header-style-5-title-wrapper">
+        <div class="greennature-page-title-overlay"></div>
+        <div class="greennature-page-title-container container">
+            <h1 class="greennature-page-title"><%- blog.title %></h1>
+            <span class="greennature-page-caption"><%- blog.writer %></span>
+        </div>
+    </div>
+    <!-- is search -->
+    <div class="content-wrapper">
+        <div class="greennature-content">
+
+            <!-- Above Sidebar Section-->
+
+            <!-- Sidebar With Content Section-->
+            <div class="with-sidebar-wrapper">
+                <div class="with-sidebar-container container">
+                    <div class="with-sidebar-left nine columns">
+                        <div class="with-sidebar-content eight columns">
+                            <section id="content-section-1">
+                                <div class="section-container container">
+                                    <div class="portfolio-item-wrapper type-classic-portfolio" data-ajax="https://demo.goodlayers.com/greennature/wp-admin/admin-ajax.php">
+                                        <div class="portfolio-item-holder  greennature-portfolio-column-1">
+                                            <div class="greennature-isotope" data-type="portfolio" data-layout="fitRows">
+                                                <div class="clear"></div>
+                                                <div class="twelve columns">
+                                                    <div class="greennature-item greennature-portfolio-item greennature-classic-portfolio">
+                                                        <div class="greennature-ux greennature-classic-portfolio-ux">
+                                                            
+
+                                                            <div class="col-sm-5 col-md-5 col-lg-5 block2-pic hov-img0">
+                                                                <div class="greennature-blog-thumbnail greennature-gallery">
+                                                                    <div class="flexslider" data-pausetime="7000" data-slidespeed="600" data-effect="fade">
+                                                                        <ul class="slides">
+                                                                            <% blog.images.forEach((image) => { %>
+                                                                                <li>
+                                                                                    <a class="hov-img0 how-pos5-parent rs1 " href="/blogs/<%- blog.id %>" data-fancybox-group="greennature-gal-1" data-rel="fancybox">
+                                                                                        <img class=" img-fluid" src="/images/blogs/<%- image.url %>" alt="" />
+                                                                                    
+                                                                                        <div class=" flex-col-c-m size-140 pt-2 pb-2 pl-3 pr-3 rounded bg-secondary how-pos5 time-container">
+                                                                                            <span class="stext-109 txt-center ">
+                                                                                                <div class=" bold text-light font-weight-bold text-lg">
+                                                                                                    <div class="greennature-blog-day"><%= new Date(blog.createdAt).getFullYear(); %></div>
+                                                                                                    <div class="greennature-blog-month text-uppercase"><%= months[new Date(blog.createdAt).getMonth()] %></div>
+                                                                                                    
+                                                                                                    <div class="eventlist-datetag-status date-eraser" date="<%- blog.createdAt %>"></div>
+                                                                                                </div>
+                                                                                                
+                                            
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </li>
+                                                                            <% }); %>
+                                                                            
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                            
+                                            
+                                                            </div>
+                                                            
+
+
+
+                                                            <div class="portfolio-classic-content">
+                                                                <h3 class="portfolio-title"><%- blog.title%></h3>
+                                                                <div class="greennature-portfolio-info">
+                                                                    <div class="blog-info blog-author greennature-skin-info"><i class="fa fa-pencil"></i><span title="Posts by John Maxwell" rel="author"><%- blog.writer %></span ></div>
+                                                                    <div class="clear"></div>
+                                                                </div>
+                                                                <div class="portfolio-excerpt">
+                                                                   <%= blog.detail %>
+                                                                    <h4 class="blog-info blog-category greennature-skin-info"><i class="" aria-hidden="true"></i>Blog Sources </h4>
+                                                                    <% blog.sources.forEach((source) => { %>    
+                                                                        <div class="blog-info blog-category greennature-skin-info"><i class="fa fa-link" aria-hidden="true"></i><a href="#" rel="tag"><%= source.title %></a><span class="sep"> --- </span><i class="fa fa-link" aria-hidden="true"></i> <a href="#"><%= source.url %></a></div>
+                                                                    <% }); %> 
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Below Sidebar Section-->
+
+        </div>
+        <!-- greennature-content -->
+        <div class="clear"></div>
+    </div>
+
+<%- include('footer') -%>
