@@ -1,11 +1,14 @@
+const url = require("url");
 const multer = require("multer");
 const path = require("path");
 const { Op } = require("sequelize");
 const Blog = require("../models").Blog;
 const Campaign = require("../models").Campaign;
-const Users = require("../models").users;
+const User = require("../models").users;
+const BlogSource  = require("../models").BlogSource;
 const AppError = require("../utils/AppError");
 const { catchAsync } = require("./error.controller");
+let moment = require('moment');
 
 const multerBlogStorage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -83,8 +86,13 @@ exports.renderUsers = catchAsync(async(req, res,next) => {
     let options = {
         offset,
         limit,
+        where: {
+          email: {
+            [Op.ne]: "super@green.com",
+          },
+        },
     };
-    const users = await Users.findAll(options);
+    const users = await User.findAll(options);
         res.render("admin/users", {
         users,
         page,
@@ -157,7 +165,24 @@ exports.renderCreateBlog = catchAsync(async (req, res, next) => {
   });
 
 exports.createBlog = catchAsync(async (req, res, next) => {
-    await Blog.create({ ...req.body, views: 0 }, { include: ["images", "sourcees"] });
+ 
+  if (!req.body.source_titles) {
+    req.body.sources.pop();
+    } else {
+      req.body.sources.pop();
+      req.body.source_titles.forEach((source_title, index) => {
+        req.body.source_urls.forEach((url, urlIndex) => {
+          if(index === urlIndex){
+            req.body.sources.push({
+              source_title: source_title,
+              source_url:url,
+            });
+          }
+        })
+      });
+  }
+
+    await Blog.create({ ...req.body }, { include: ["images", "sources"] });
     res.redirect(
       url.format({
         pathname: "/admin/blogs",
@@ -169,8 +194,10 @@ exports.createBlog = catchAsync(async (req, res, next) => {
   });
 
 exports.renderEditBlog = catchAsync(async (req, res, next) => {
-  console.log("hey")
-    const blog = await Blog.findByPk(req.params.id);
+  
+    const blog = await Blog.findByPk(req.params.id, {
+      include:["sources"],
+    });
     res.render("admin/edit-blog", {
         success: null,
         blog,
@@ -178,11 +205,36 @@ exports.renderEditBlog = catchAsync(async (req, res, next) => {
 });
 
 exports.editBlog = catchAsync(async (req, res, next) => {
+  if (!req.body.source_titles) {
+    req.body.sources.pop();
+    } else {
+      req.body.sources.pop();
+      req.body.source_titles.forEach((source_title, index) => {
+        req.body.source_urls.forEach((url, urlIndex) => {
+          if(index === urlIndex){
+            req.body.sources.push({
+              source_title: source_title,
+              source_url:url,
+              blog_id:req.params.id,
+            });
+          }
+        })
+      });
+  }
     await Blog.update(req.body, {
       where: {
         id: req.params.id,
       },
     });
+
+    await BlogSource.destroy({
+      where:{
+        blog_id: req.params.id,
+      }
+    })
+
+    await BlogSource.bulkCreate(req.body.sources);
+
     res.redirect(
       url.format({
         pathname: "/admin/blogs",
@@ -242,10 +294,15 @@ exports.renderCreateCampaign = catchAsync(async (req, res, next) => {
   });
 
 exports.createCampaign = catchAsync(async (req, res, next) => {
-    await Campaign.create({ ...req.body, views: 0 }, { include: ["images"] });
+  let campaign_duration = req.body.datetimes.split(' - ');
+  var start_date_object = moment(campaign_duration[0], "DD/MM/YYYY"); // 1st argument - string, 2nd argument - format
+  var end_date_object = moment(campaign_duration[1], "DD/MM/YYYY"); // convert moment.js object to Date object
+  req.body.start_date = start_date_object.toString();
+  req.body.end_date = end_date_object.toString();
+    await Campaign.create({ ...req.body }, { include: ["images"] });
     res.redirect(
       url.format({
-        pathname: "/admin/campaign",
+        pathname: "/admin/campaigns",
         query: {
           success: "Campaign successfully created!",
         },
@@ -262,6 +319,12 @@ exports.renderEditCampaign = catchAsync(async (req, res, next) => {
 });
 
 exports.editCampaign = catchAsync(async (req, res, next) => {
+  console.log(req.body);
+  let campaign_duration = req.body.datetimes.split(' - ');
+  var start_date_object = moment(campaign_duration[0], "DD/MM/YYYY"); // 1st argument - string, 2nd argument - format
+  var end_date_object = moment(campaign_duration[1], "DD/MM/YYYY"); // convert moment.js object to Date object
+  req.body.start_date = start_date_object.toString();
+  req.body.end_date = end_date_object.toString();
     await Campaign.update(req.body, {
       where: {
         id: req.params.id,
@@ -269,7 +332,7 @@ exports.editCampaign = catchAsync(async (req, res, next) => {
     });
     res.redirect(
       url.format({
-        pathname: "/admin/campaign",
+        pathname: "/admin/campaigns",
         query: {
           success: "Campaign successfully updated!",
         },
@@ -285,12 +348,12 @@ exports.editCampaign = catchAsync(async (req, res, next) => {
         id: req.params.id,
       },
     });
-    if (!blog) {
+    if (!campaign) {
       return next(new AppError("Campaign with this ID does not exist", 404));
     }
     res.redirect(
       url.format({
-        pathname: "/admin/campaign",
+        pathname: "/admin/campaigns",
         query: {
           success: "Campaign successfully deleted!",
         },

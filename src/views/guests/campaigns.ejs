@@ -28,13 +28,11 @@
                                                 <div class=" flex-col-c-m size-140 pt-2 pb-2 pl-3 pr-3 rounded bg-secondary how-pos5 time-container">
                                                     <span class="stext-109 txt-center ">
                                                         <div class=" bold text-light font-weight-bold text-lg">
-                                                            <div class="greennature-blog-day"><%= new Date(campaign.createdAt).getFullYear(); %></div>
-                                                            <div class="greennature-blog-month text-uppercase"><%= months[new Date(campaign.createdAt).getMonth()] %></div>
+                                                            <div class="greennature-blog-day"><%= new Date(campaign.end_date).getFullYear(); %></div>
+                                                            <div class="greennature-blog-month text-uppercase"><%= months[new Date(campaign.end_date).getMonth()] %></div>
                                                             
-                                                            <div class="eventlist-datetag-status date-eraser" date="<%- campaign.createdAt %>"></div>
+                                                            <div class="eventlist-datetag-status date-eraser" date="<%- campaign.end_date %>"></div>
                                                         </div>
-                                                        
-    
                                                     </span>
                                                 </div>
                                             </a>

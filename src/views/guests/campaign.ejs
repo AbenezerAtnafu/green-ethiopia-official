@@ -7,7 +7,7 @@
                 <div class="greennature-page-title-overlay"></div>
                 <div class="greennature-page-title-container container">
                     <h1 class="greennature-page-title"><%- campaign.title %></h1>
-                    <span class="greennature-page-caption"><%- campaign.place %></span>
+                    <span class="greennature-page-caption">Where? <%- campaign.place %></span>
                 </div>
             </div>
             <!-- is search -->
@@ -36,16 +36,17 @@
                                                                         <h3 class="portfolio-title"><a  href="#"  ><%- campaign.title %></a></h3>
                                                                         <div class="greennature-portfolio-info">
                                                                             <div class="blog-info blog-category greennature-skin-info"><i class="fa fa-sign-in" aria-hidden="true"></i> <a href="<%- campaign.join_us_url %>" rel="tag">Click to Join Campaign</a></div>
-                                                                            <div class="blog-info blog-category greennature-skin-info"><i class="fa fa-map-marker" aria-hidden="true"></i><a href="#" rel="tag">Campaign</a><a href="#" rel="tag">Addis Ababa</a></div>
+                                                                            <div class="blog-info blog-category greennature-skin-info"><i class="fa fa-map-marker" aria-hidden="true"></i><a href="#" rel="tag">Where -> </a><a href="#" rel="tag"> <%- campaign.place %></a></div>
                                                                            
                                                                             <div class="clear"></div>
                                                                         </div>
-                                                                        <div class="portfolio-excerpt"><%- campaign.description %>
+                                                                        <div class="portfolio-excerpt" style="font-size: medium;"><%- campaign.description %>
                                                                             <div class="blog-info blog-category greennature-skin-info">
                                                                                 <i class="fa fa-link" aria-hidden="true"></i>
-                                                                                <a href="#" rel="tag">Campaign</a>
-                                                                                <span class="sep">,</span> 
-                                                                                <iframe width="560" height="315" src="<%- campaign.video_url.replace('watch?v=', 'embed/') %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>     
+                                                                                <span class="sep">,</span>
+                                                                                <% if(campaign.video_url) { %>
+                                                                                    <iframe width="560" height="315" src="<%- campaign.video_url.replace('watch?v=', 'embed/') %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>     
+                                                                                <% } %>
                                                                             </div>                                                                      
                                                                         </div>
                                                                     </div>

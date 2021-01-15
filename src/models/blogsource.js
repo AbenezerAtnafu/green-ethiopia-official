@@ -18,9 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   BlogSource.init({
-    title: DataTypes.STRING,
-    url: DataTypes.STRING,
-    source_description: DataTypes.TEXT,
+    source_title: DataTypes.STRING,
+    source_url: DataTypes.STRING,
     blog_id: {
       type: DataTypes.INTEGER,
       onDelete:"CASCADE",

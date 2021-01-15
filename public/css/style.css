@@ -569,7 +569,7 @@ input[type="submit"], input[type="button"]{ -webkit-appearance: none; }
 .greennature-box-with-icon-item.pos-left > i{ float: left; margin: 5px 25px 0px 0px; }
 
 .greennature-box-with-icon-item.type-circle .box-with-circle-icon{ padding: 18px; display: inline-block; 
-	width: 22px; text-align: center; line-height: 22px;
+	 text-align: center; line-height: 22px;
 	position: absolute; -moz-border-radius: 30px; -webkit-border-radius: 30px; border-radius: 30px; }
 .greennature-box-with-icon-item.type-circle .box-with-circle-icon > i{ font-size: 22px; margin-right: 0; }	
 .greennature-box-with-icon-item.type-circle.pos-top{ padding-top: 50px; }

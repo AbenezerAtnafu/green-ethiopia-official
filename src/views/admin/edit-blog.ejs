@@ -1,4 +1,4 @@
-<%- include('header', {title: "Blogs"}); -%>
+<%- include('header', {title: "Edit Blog"}); -%>
 <%- include('nav', { blogactive:"active",campaignactive:"",useractive:""}); -%>
 
         <!-- End Navbar -->
@@ -29,57 +29,64 @@
               <div class="col-md-12">
                 <div class="card">
                   <div class="card-header card-header-primary">
-                    <h4 class="card-title">Create Blog</h4>
+                    <h4 class="card-title">Edit Blog</h4>
                     <p class="card-category">Fill the form</p>
                   </div>
                     <div class="card-body">
-                      <form>
+                      <form onsubmit="return validation(this);" method="POST" action="/admin/blogs/edit<%- blog.id %>">
                         <div class="form-row">
                           <div class="form-group col-md-6">
-                            <input type="text" name="title" class="form-control" id="inputEmail4" placeholder="Title">
+                            <input type="text" name="title" class="form-control" id="title" placeholder="Title" value=<%- blog.title %>>
                           </div>
                           <div class="form-group col-md-6">
-                            <input type="description" name="description" class="form-control" id="inputPassword4" placeholder="Description">
+                            <input type="description" name="description" class="form-control" id="description" placeholder="Description" value=<%- blog.description %>>
                           </div>
                         </div>
                         <div class="form-group">
-                          <input type="text" name="writer" class="form-control" id="inputAddress" placeholder="Author">
+                          <input type="text" name="writer" class="form-control" id="writer" placeholder="Author" value=<%- blog.writer%>>
                         </div>
                         <div class="form-group">
                           <label for="">Sources</label>
+                          <input type="hidden" name="sources[]">
                           <div class="form-row">
                             <div class="form-group col-md-4 col-sm-4">
-                              <input type="text" name="title" class="form-control" id="inputEmail4" placeholder="Title">
+                              <input type="text" name="source_titles" class="form-control source_titles" id="source_titles_one" placeholder="Title" value=<%- blog.sources[0].source_title%>>
                             </div>
-                            <div class="form-group col-md-4 col-sm-4">
-                              <input type="text" name="url" class="form-control" id="inputPassword4" placeholder="Source Link">
-                            </div>
-                            <div class="form-group col-md-4 col-sm-4">
-                              <input type="text" name="description" class="form-control" id="inputPassword4" placeholder="Source Description">
+                            <div class="form-group col-md-8 col-sm-8">
+                              <input type="text" name="source_urls" class="form-control source_urls" id="source_urls_one" placeholder="Source Link" value=<%- blog.sources[0].source_url%>>
                             </div>
                           </div>
                           <div class="form-row">
                             <div class="form-group col-md-4 col-sm-4">
-                              <input type="text" name="title" class="form-control" id="inputEmail4" placeholder="Title">
+                              <input type="text" name="source_titles" class="form-control source_titles" id="source_titles_two" placeholder="Source Title" value=<%- blog.sources[1].source_title%> >
                             </div>
-                            <div class="form-group col-md-4 col-sm-4">
-                              <input type="text" name="url" class="form-control" id="inputPassword4" placeholder="Source Link">
-                            </div>
-                            <div class="form-group col-md-4 col-sm-4">
-                              <input type="text" name="description" class="form-control" id="inputPassword4" placeholder="Source Description">
+                            <div class="form-group col-md-8 col-sm-8">
+                              <input type="text" name="source_urls" class="form-control source_urls" id="source_urls_two" placeholder="Source Link" value=<%- blog.sources[1].source_url%>>
                             </div>
                           </div>
                           <div class="form-row">
                             <div class="form-group col-md-4 col-sm-4">
-                              <input type="text" name="title" class="form-control" id="inputEmail4" placeholder="Title">
+                              <input type="text" name="source_titles" class="form-control source_titles" id="source_titles_three" placeholder="Source Title" value=<%- blog.sources[2].source_title%>>
                             </div>
-                            <div class="form-group col-md-4 col-sm-4">
-                              <input type="text" name="url" class="form-control" id="inputPassword4" placeholder="Source Link">
-                            </div>
-                            <div class="form-group col-md-4 col-sm-4">
-                              <input type="text" name="description" class="form-control" id="inputPassword4" placeholder="Source Description">
+                            <div class="form-group col-md-8 col-sm-8">
+                              <input type="text" name="source_urls" class="form-control source_urls" id="source_urls_three" placeholder="Source Link" value=<%- blog.sources[2].source_url%>>
                             </div>
                           </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-4 col-sm-4">
+                              <input type="text" name="source_titles" class="form-control source_titles" id="source_titles_four" placeholder="Source Title" value=<%- blog.sources[3].source_title%>>
+                            </div>
+                            <div class="form-group col-md-8 col-sm-8">
+                              <input type="text" name="source_urls" class="form-control source_urls" id="source_urls_four" placeholder="Source Link" value=<%- blog.sources[3].source_url%>>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <button class="btn btn-primary m-t-25" type="submit">
+                            Submit
+                          </button>
+                        </div>
                       </form>
                   </div>
                 </div>
@@ -89,4 +96,4 @@
             
           </div>
         </div>
-        <%- include('footer'); -%>
+<%- include('footer'); -%>

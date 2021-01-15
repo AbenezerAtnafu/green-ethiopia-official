@@ -1,4 +1,4 @@
-function validation(event){
+function userValidation(event){
   
     $(".error").remove();
     let error = true;
@@ -11,9 +11,9 @@ function validation(event){
         error = false;
         $('#password').after('<span style="color: red;" class="error">Please provide a password (more than 8 characters).</span>');
     };
-    if($("#password").val() != $("#repeatPassword").val()){
+    if($("#password").val() !== $("#repeatPassword").val()){
         error = false;
-        $('#repeatPasswowrd').after('<span style="color: red;" class="error">Passwowrd doesnot match!</span>');
+        $('#repeatPassword').after('<span style="color: red;" class="error">Passwowrd doesnot match!</span>');
     };
     if ($("#email").val().length < 1) {
         $("#email").after(

@@ -13,6 +13,7 @@ const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 
 // static views render
 exports.renderHome = catchAsync(async (req, res, next) => {
+  console.log("error");
   const page = req.query.page * 1 || 1;
   const limit = req.query.limit * 1 || 4;
   const offset = (page - 1) * limit;
@@ -24,7 +25,7 @@ exports.renderHome = catchAsync(async (req, res, next) => {
     ],
     include: ["images"]
   }
-
+  
   const campaigns = await Campaign.findAll(options);
   res.render("guests/index", {
     campaigns,

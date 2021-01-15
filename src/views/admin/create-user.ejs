@@ -33,19 +33,22 @@
                     <p class="card-category">Fill the form</p>
                   </div>
                   <div class="card-body">
-                    <form>
+                    <form onsubmit="return userValidation(this);" action="/admin/users/create" id="users-form" method="POST"  class="needs-validation" enctype="multipart/form-data">
                       <div class="form-row">
                         <div class="form-group col-md-12">
                           <input type="text" name="name" class="form-control" id="name" placeholder="Full Name">
                         </div>
                       </div>
                       <div class="form-group">
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                      </div>
+                      <div class="form-group">
                         <div class="form-row">
                           <div class="form-group col-md-6 col-sm-4">
-                            <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                            <input type="text" name="password" class="form-control" id="password" placeholder="Password">
                           </div>
                           <div class="form-group col-md-6 col-sm-4">
-                            <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                            <input type="text" name="repeatPassword" class="form-control" id="repeatPassword" placeholder="Confirm Password">
                           </div>
                       </div>
             

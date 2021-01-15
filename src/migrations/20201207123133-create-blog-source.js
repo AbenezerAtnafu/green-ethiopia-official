@@ -8,14 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
+      source_title: {
         type: Sequelize.STRING
       },
-      url: {
+      source_url: {
         type: Sequelize.STRING
-      },
-      source_description: {
-        type: Sequelize.TEXT
       },
       blog_id: {
         type: Sequelize.INTEGER,

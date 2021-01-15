@@ -33,7 +33,7 @@
             <p class="card-category">Fill the form</p>
           </div>
           <div class="card-body">
-            <form>
+            <form onsubmit="return validationCampaign(this);" action="/admin/campaigns/create" id="campaign-form" method="POST"  class="needs-validation" enctype="multipart/form-data">
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <input type="text" name="title" class="form-control" id="title" placeholder="Title">
@@ -53,12 +53,12 @@
 
               <div class="form-row">
                 <div class="form-group col-md-12">
-                  <input type="text" name="datetimes" id="picker" class="form-control"/>
+                  <input type="text" name="datetimes" id="picker" class="form-control" />
                 </div>
               </div>
 
               <div class="form-group">
-                <textarea type="text" name="description" class="form-control" id="inputAddress" placeholder="Description"></textarea>
+                <textarea type="text" name="description" class="form-control" id="description" placeholder="Description"></textarea>
               </div>
 
               <div class=" form-group">

@@ -1,4 +1,4 @@
-<%- include('header', {title: "Blogs"}); -%>
+<%- include('header', {title: "Users"}); -%>
 <%- include('nav', { blogactive:"",campaignactive:"",useractive:"active"}); -%>
 
 <div class="content">
@@ -53,7 +53,7 @@
                           rel="tooltip"
                           title="Delete"
                           class="btn btn-danger btn-link btn-sm"
-                          href="/admin/users/delete/<%- user.id %>"
+                          href="/admin/users/delete<%- user.id %>"
                         >
                           <i class="material-icons">delete</i>
                         </a>

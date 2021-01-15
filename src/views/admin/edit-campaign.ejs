@@ -1,5 +1,5 @@
-<%- include('header', {title: "Blogs"}); -%>
-<%- include('nav', { blogactive:"active",campaignactive:"",useractive:""}); -%>
+<%- include('header', {title: "Edit Campaign"}); -%>
+<%- include('nav', { blogactive:"",campaignactive:"active",useractive:""}); -%>
 
         <!-- End Navbar -->
         <div class="content">
@@ -21,7 +21,7 @@
             </div>
             <% }; %>
             <div>
-              <a href="/admin/blogs" class="btn btn-primary active"
+              <a href="/admin/campaigns" class="btn btn-primary active"
                 >Back</a
               >
             </div>
@@ -29,26 +29,26 @@
               <div class="col-md-12">
                 <div class="card">
                   <div class="card-header card-header-primary">
-                    <h4 class="card-title">Create Blog</h4>
+                    <h4 class="card-title">Edit Campaign</h4>
                     <p class="card-category">Fill the form</p>
                   </div>
                   <div class="card-body">
-                    <form>
+                    <form onsubmit="return validationCampaign(this);" action="/admin/campaigns/edit<%- campaign.id %>" id="campaign-form" method="POST">
                       <div class="form-row">
                         <div class="form-group col-md-6">
-                          <input type="text" name="title" class="form-control" id="title" placeholder="Title">
+                          <input type="text" name="title" class="form-control" id="title" placeholder="Title" value=<%- campaign.title  %>>
                         </div>
                         <div class="form-group col-md-6">
-                          <input type="text" name="place" class="form-control" id="place" placeholder="Place">
+                          <input type="text" name="place" class="form-control" id="place" placeholder="Place" value=<%- campaign.place%>>
                         </div>
                       </div>
                       
                       <div class="form-group">
-                        <input type="text" name="video_url" class="form-control" id="video_url" placeholder="Video Url">
+                        <input type="text" name="video_url" class="form-control" id="video_url" placeholder="Video Url" value=<%- campaign.video_url%>>
                       </div>
                         
                       <div class="form-group">
-                        <input type="text" name="join_us_url" class="form-control" id="join_us_url" placeholder="Join Us">
+                        <input type="text" name="join_us_url" class="form-control" id="join_us_url" placeholder="Join Us" value=<%- campaign.join_us_url%> >
                       </div>
         
                       <div class="form-row">
@@ -58,7 +58,7 @@
                       </div>
         
                       <div class="form-group">
-                        <textarea type="text" name="description" class="form-control" id="inputAddress" placeholder="Description"></textarea>
+                        <textarea type="text" name="description" class="form-control" id="description" placeholder="Description" value=<%- campaign.description %>></textarea>
                       </div>
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

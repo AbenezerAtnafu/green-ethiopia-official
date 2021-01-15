@@ -40,10 +40,12 @@
                           <th>Title</th>
                           <th>Description</th>
                           <th>Author</th>
-                          <th>Source</th>
-                          <th>Poster Date</th>
+                          <th>Sources</th>
+                          <th>Posted Date</th>
+                          <th>Last Updated Date</th>
                         </thead>
                         <tbody>
+
                           <% if(blogs.length>0){ %> 
                             <% blogs.forEach(function(blog){ %>
                               <tr class="text-capitalize">
@@ -65,18 +67,29 @@
                                 <%} else{%>
                                   <td><%- blog.writer %></td>
                                 <% } %>
-                                  
+                                <td>
+
                                 <% blog.sources.forEach((source) => { %>
-                                    <td><a href="<%- source.url %>" class="btn btn-success"> <%- source.title %> ...</a></td>
+                                  <div>
+                                    <a href="<%- source.source_url %>" class="btn btn-success"> 
+                                      <% if(source.source_title.length > 20){ %>
+                                        <%- source.source_title.substring(0,20) %> ...
+                                      <%} else{%>
+                                        <%-source.source_title %>
+                                      <% } %>
+                                    </a>
+                                  </div>
                                 <% }) %>
+                                </td>  
                                 <td><%- blog.createdAt %></td>
+                                <td><%- blog.updatedAt %></td>
                                 <td>
                                   <a
                                     type="button"
                                     rel="tooltip"
                                     title="Edit"
                                     class="btn btn-primary btn-link btn-sm"
-                                    href="/admin/blogs/edit/<%- blog.id %>"
+                                    href="/admin/blogs/edit<%- blog.id %>"
                                   >
                                     <i class="material-icons">edit</i>
                                   </a>
@@ -85,7 +98,7 @@
                                     rel="tooltip"
                                     title="Delete"
                                     class="btn btn-danger btn-link btn-sm"
-                                    href="/admin/blogs/delete/<%- blog.id %>"
+                                    href="/admin/blogs/delete<%- blog.id %>"
                                   >
                                     <i class="material-icons">delete</i>
                                   </a>

@@ -3,7 +3,8 @@ function isValidURL(string) {
     return (res !== null)
 };
 
-function validation(event) {
+function validationCampaign(event) {
+        
     $(".error").remove();
     let error = true;
     if($("#title").val().length < 1){
@@ -18,20 +19,23 @@ function validation(event) {
         error = false;
         $('#place').after('<span style="color: red;" class="error">Please provide Place where the campaign occurs.</span>');
     }; 
-    if(isValidURL($("#video_url"))){
+    if(($("#video_url").val().length > 0) && !isValidURL($("#video_url").val())){
         error = false;
         $('#video_url').after('<span style="color: red;" class="error">Please provide valid Video url.</span>');
     }; 
-    if(isValidURL($("#join_us_url"))){
+    if(($("#join_us_url").val().length > 0) && !isValidURL($("#join_us_url").val())){
         error = false;
         $('#join_us_url').after('<span style="color: red;" class="error">Please provide valid url.</span>');
-    };   
-    if($('#file-3').val().length < 1){
-        error = false;
-        $('#file-error').after('<span style="color: red;" class="error">Please provide atleast One Image.</span>');
+    };  
+    if($('#file-3').length !== 0) {
+        if($('#file-3').val().length < 1){
+            error = false;
+            $('#file-error').after('<span style="color: red;" class="error">Please provide atleast One Image.</span>');
+        }
     }
     return error;
 };
+
 
 
 
