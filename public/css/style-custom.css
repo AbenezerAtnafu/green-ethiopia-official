@@ -22,9 +22,9 @@ h6{ font-size: 16px; }
 .top-navigation-wrapper{ background-color: #272727; }
 .top-navigation-wrapper{ color: #cecece; }
 .top-navigation-wrapper a{ color: #f2f2f2; }
-.greennature-header-inner, .greennature-header-wrapper.header-style-5-wrapper .greennature-header-inner{ background-color: rgba(37, 53, 38, 0.85); }@media only screen and (max-width: 767px) { .greennature-header-wrapper.header-style-5-wrapper .greennature-header-inner{ background-color: #253526; } }
+.greennature-header-inner, .greennature-header-wrapper.header-style-5-wrapper .greennature-header-inner{ color: black; }@media only screen and (max-width: 767px) { .greennature-header-wrapper.header-style-5-wrapper .greennature-header-inner{ background-color: #253526; } }
 .greennature-main-menu > li > a, .greennature-main-menu > li > a i{ color: #ffffff; } @media only screen and (max-width: 1100px) { body .greennature-donate-button, body .greennature-donate-button:hover, body .greennature-top-woocommerce-button{ color: #ffffff; }} 
-.greennature-main-menu > li:hover > a, .greennature-main-menu > li.current-menu-item > a, .greennature-main-menu > li.current-menu-ancestor > a{ color: #ffffff; opacity: 1; filter: alpha(opacity=100); }.greennature-navigation-gimmick{ background-color: #90ba92; }
+.greennature-main-menu > li:hover > a, .greennature-main-menu > li.current-menu-item > a, .greennature-main-menu > li.current-menu-ancestor > a{ color: #000000; opacity: 1; filter: alpha(opacity=100); }.greennature-navigation-gimmick{ background-color: #90ba92; }
 .greennature-button-overlay{ background-color: #ecb338; }
 .greennature-button-overlay{ border-color: #8c6e16; }
 .greennature-donate-button, .greennature-donate-button:hover{ color: #685617; }

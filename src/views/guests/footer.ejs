@@ -18,13 +18,15 @@
                     <span class="clear"></span><span class="greennature-space"
                         style="margin-top: 10px; display: block;"></span>
 
-                   
+
 
                     <span class="clear"></span><span class="greennature-space"
                         style="margin-top: 10px; display: block;"></span>
 
                     <i class="greennature-icon fa fa-envelope-o"
-                        style="vertical-align: middle; color: #fff; font-size: 16px; "></i> greenethiopia@gmail.com
+                        style="vertical-align: middle; color: #fff; font-size: 16px; "></i>
+                    <div class="hideUnderline d-inline"><a href="mailto: greenethiopiaorg@gmail.com"
+                            target="_blank">greenethiopiaorg@gmail.com</a></div>
                 </div>
             </div>
         </div>
@@ -40,11 +42,13 @@
                                     height="150" /></a>
                         </div>
                         <div class="recent-post-widget-content">
-                            <div class="recent-post-widget-title"><a
-                                    href="https://forms.gle/TDSSqaN149751dgp7">Volunteer</a></div>
+                            <div>
+                                <p>Volunteer</p>
+                            </div>
                             <div class="recent-post-widget-info">
-                                <div class="blog-info blog-date greennature-skin-info"><i class="fa fa-clock-o"></i><a
-                                        href="https://forms.gle/TDSSqaN149751dgp7">Form</a></div>
+                                <div class="hideUnderline blog-info blog-date greennature-skin-info"><i
+                                        class="fa fa-clock-o"></i><a href="https://forms.gle/TDSSqaN149751dgp7">Form</a>
+                                </div>
                                 <div class="clear"></div>
                             </div>
                         </div>
@@ -69,7 +73,7 @@
                                         height="150" /></a>
                             </div>
                             <div class="recent-post-widget-content">
-                                <div class="recent-post-widget-title"><a href="/about">About Us</a></div>
+                                <div class="hideUnderline recent-post-widget-title"><a href="/about">About Us</a></div>
                             </div>
 
                         </div>
@@ -79,7 +83,8 @@
                                         height="150" /></a>
                             </div>
                             <div class="recent-post-widget-content">
-                                <div class="recent-post-widget-title"><a href="/contact-us">Contact Us</a></div>
+                                <div class="hideUnderline recent-post-widget-title"><a href="/contact-us">Contact Us</a>
+                                </div>
                             </div>
 
                         </div>
@@ -95,14 +100,14 @@
     <div class="copyright-wrapper">
         <div class="copyright-container container">
             <div class="copyright-left">
-                <a href="facebook.com/officialgreenethiopia "><i class="greennature-icon fa fa-facebook"
+                <a href="https://www.facebook.com/officialgreenethiopia"><i class="greennature-icon fa fa-facebook"
                         style="vertical-align: middle;color: #bbbbbb;font-size: 20px"></i></a> <a
-                    href="instagram.com/greenethiopia"><i class="greennature-icon fa fa-instagram"
+                    href="https://www.instagram.com/greenethiopia/"><i class="greennature-icon fa fa-instagram"
                         style="vertical-align: middle;color: #bbbbbb;font-size: 20px"></i></a>
-                        <a href="/login"><i class="greennature-icon fa fa-user"
-                            style="vertical-align: middle;color: #bbbbbb;font-size: 20px"></i></a>
+                <a href="/login"><i class="greennature-icon fa fa-user"
+                        style="vertical-align: middle;color: #bbbbbb;font-size: 20px"></i></a>
             </div>
-            <div class="copyright-right">
+            <div class="copyright-right hideUnderline">
                 Developed by<a target="_blank" href="https://www.eshidigital.com"> Eshi Digital</a> </div>
             <div class="clear"></div>
         </div>
@@ -244,6 +249,19 @@
             }
         });
     });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+            if (scroll > 100) {
+                $(".scroll-change").css("background", "white");
+            } else {
+                $(".scroll-change").css("background", "none");
+            }
+        })
+    })
 </script>
 </body>
 
