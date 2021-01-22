@@ -1695,7 +1695,6 @@ bottom: 20px;
 .hov-img0 {
 	display: block;
 	overflow: hidden;
-	
 }
 
 .hov-img0 img{
@@ -1709,6 +1708,29 @@ transition: transform 0.9s ease;
 }
 
 .hov-img0:hover img {
+-webkit-transform: scale(1.1);
+-moz-transform: scale(1.1);
+-ms-transform: scale(1.1);
+-o-transform: scale(1.1);
+transform: scale(1.1);
+}
+
+.hov-img1 {
+	display: block;
+	overflow: hidden;
+}
+
+.hov-img1 img{
+width: 600px;
+height: 500px;
+object-fit: contain; 
+-webkit-transition: transform 0.9s ease;
+-o-transition: transform 0.9s ease;
+-moz-transition: transform 0.9s ease;
+transition: transform 0.9s ease;
+}
+
+.hov-img1:hover img {
 -webkit-transform: scale(1.1);
 -moz-transform: scale(1.1);
 -ms-transform: scale(1.1);
